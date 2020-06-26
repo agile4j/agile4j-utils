@@ -1,4 +1,4 @@
-group 'com.github.agile4j'
+group 'com.agile4j'
 version '1.0.0-SNAPSHOT'
 
 buildscript {
