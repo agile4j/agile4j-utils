@@ -4,7 +4,6 @@ import com.agile4j.utils.enumeration.ChineseZodiacEnum
 import com.agile4j.utils.enumeration.ConstellationEnum
 import com.agile4j.utils.enumeration.GenderEnum
 import com.agile4j.utils.enumeration.ProvinceEnum
-import org.apache.commons.lang3.StringUtils
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.util.*
@@ -29,15 +28,5 @@ class IdCardUtilTest {
         assertEquals(ChineseZodiacEnum.HORSE, IdCardUtil.getChineseZodiac(cnIdCard))
         assertEquals("丙午", IdCardUtil.getChineseEra(cnIdCard))
     }
-
-    @Test
-    fun test() {
-        // todo: why is "[Ljava.lang.String;@ee7d9f1" but not "ab"
-        println(join("a", "b"))
-        println(StringUtils.join("a", "b"))
-    }
-
-    private fun join(vararg targets: String): String = StringUtils.join(targets)
-
 
 }

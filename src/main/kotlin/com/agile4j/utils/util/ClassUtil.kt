@@ -6,8 +6,8 @@ import java.net.URL
 
 object ClassUtil {
 
-    private val PATH_SEPARATOR = "/"
-    private val PACKAGE_SEPARATOR = "."
+    private const val PATH_SEPARATOR = "/"
+    private const val PACKAGE_SEPARATOR = "."
 
     private val BASIC_TYPE_DEFAULT_VALUE_MAP = mapOf<Class<*>, Any>(
             Byte::class.java to 0.toByte(),
@@ -19,7 +19,7 @@ object ClassUtil {
             Char::class.java to ' ',
             Boolean::class.java to false)
 
-    // todo: study and optimize
+    // todo: optimize
     fun getDefaultClassLoader(): ClassLoader {
         return Thread.currentThread().contextClassLoader
     }
