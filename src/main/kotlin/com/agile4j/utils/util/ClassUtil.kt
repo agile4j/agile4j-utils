@@ -19,7 +19,6 @@ object ClassUtil {
             Char::class.java to ' ',
             Boolean::class.java to false)
 
-    // todo: optimize
     fun getDefaultClassLoader(): ClassLoader {
         return Thread.currentThread().contextClassLoader
     }

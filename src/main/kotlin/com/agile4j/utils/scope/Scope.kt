@@ -20,7 +20,7 @@ class Scope {
         var value = map[key] as T?
         if (value == null && key.initializer != null) {
             value = key.initializer.get()
-            value?.let {map.put(key, value)} // TODO computeIfAbsent?
+            value?.let {map.put(key, value)}
         }
         return value?:key.defaultValue
     }
