@@ -30,4 +30,6 @@ object MapUtil {
 
     fun isKeyNotContainsNull(target: Map<*, *>?) =
             ArrayUtil.isNotContainsNull(target!!.keys.toTypedArray())
+
+    fun <K, V> Map<K, V>.reverseKV(): Map<V, K> = this.map { (k, v) -> v to k }.toMap()
 }
