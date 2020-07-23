@@ -4,7 +4,6 @@ gradle.properties
 /*.iml
 /build
 /gradle
-/gradlew
 /gradlew.bat
 /out
 .DS_store
