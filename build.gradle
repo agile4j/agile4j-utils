@@ -68,31 +68,31 @@ publishing {
             pom {
                 // 构件名称
                 // 区别于artifactId，可以理解为artifactName
-                name = 'agile4j-utils'
+                // name = 'agile4j-utils'
                 // 构件描述
                 description = '工具包'
                 // 构件主页
-                url = 'https://github.com/agile4j/agile4j-utils'
+                //url = 'https://github.com/agile4j/agile4j-utils'
                 // 许可证名称和地址
-                licenses {
+                /*licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
                         url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
-                }
+                }*/
                 // 开发者信息
-                developers {
+                /*developers {
                     developer {
                         name = 'liurenpeng'
                         email = '13263258175@163.com'
                     }
-                }
+                }*/
                 // 版本控制仓库地址
-                scm {
+                /*scm {
                     url = 'https://github.com/agile4j/agile4j-utils'
                     connection = 'scm:git:git://github.com/agile4j/agile4j-utils.git'
                     developerConnection = 'scm:git:ssh://git@github.com:agile4j/agile4j-utils.git'
-                }
+                }*/
             }
         }
     }
@@ -110,9 +110,9 @@ publishing {
     }
 }
 
-signing {
+/*signing {
     sign publishing.publications.mavenJava
-}
+}*/
 
 
 javadoc {
