@@ -1,5 +1,9 @@
 # agile4j-utils
 
+[![Build Status](https://travis-ci.org/agile4j/agile4j-utils.svg)](https://travis-ci.org/agile4j/agile4j-utils)
+[![Coverage Status](https://coveralls.io/repos/agile4j/agile4j-uitls/badge.svg?branch=master&service=github)](https://coveralls.io/github/agile4j/agile4j-uitls?branch=master)
+
+
 agile4j-utils是灵派基础包，提供了一些Kotlin项目常用的工具类。
 
 目前主要包括两部分：
