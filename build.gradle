@@ -97,7 +97,7 @@ publishing {
         }
     }
     // 定义发布到哪里
-    repositories {
+    /*repositories {
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots"
             //url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
@@ -107,7 +107,7 @@ publishing {
                 password sonatypePassword
             }
         }
-    }
+    }*/
 }
 
 /*signing {
