@@ -1,6 +1,9 @@
-language: kotlin
+language: java
 install: skip
 
 os: linux
 dist: trusty
 jdk: oraclejdk8
+
+script:
+  - ./gradlew build --scan -s
