@@ -1,6 +1,6 @@
 # agile4j-utils
 
-[![Build Status](https://travis-ci.org/agile4j/agile4j-utils.svg)](https://travis-ci.org/agile4j/agile4j-utils)
+[![Build Status](https://travis-ci.com/agile4j/agile4j-utils.svg?branch=master)](https://travis-ci.com/agile4j/agile4j-utils)
 [![Coverage Status](https://coveralls.io/repos/agile4j/agile4j-uitls/badge.svg?branch=master&service=github)](https://coveralls.io/github/agile4j/agile4j-uitls?branch=master)
 
 

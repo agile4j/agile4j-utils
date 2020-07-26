@@ -13,6 +13,9 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
+//apply plugin: 'coveralls'
+apply plugin: 'jacoco'
+check.dependsOn jacocoTestReport
 
 
 repositories {
