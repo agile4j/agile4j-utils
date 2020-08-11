@@ -1,5 +1,5 @@
 group 'com.agile4j'
-version '1.0.1-SNAPSHOT'
+version '1.0.1'
 
 buildscript {
     ext.kotlin_version = '1.3.31'
@@ -13,9 +13,6 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
-//apply plugin: 'coveralls'
-apply plugin: 'jacoco'
-check.dependsOn jacocoTestReport
 
 
 repositories {
@@ -43,7 +40,6 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-/*
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
@@ -62,6 +58,10 @@ publishing {
     // 定义发布什么
     publications {
         mavenJava(MavenPublication) {
+            // groupId = project.group
+            // artifactId = project.name
+            // version = project.version
+            // groupId,artifactId,version，如果不定义，则会按照以上默认值执行
             from components.java
             artifact sourcesJar
             artifact javadocJar
@@ -99,8 +99,8 @@ publishing {
     // 定义发布到哪里
     repositories {
         maven {
-            url "https://oss.sonatype.org/content/repositories/snapshots"
-            //url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            //url "https://oss.sonatype.org/content/repositories/snapshots"
+            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
             credentials {
                 // 这里就是之前在issues.sonatype.org注册的账号
                 username sonatypeUsername
@@ -119,4 +119,4 @@ javadoc {
     // <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     // 防止本地打开中文乱码
     options.addStringOption("charset", "UTF-8")
-}*/
+}

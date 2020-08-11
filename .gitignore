@@ -3,6 +3,9 @@ gradle.properties
 /.gradle
 /*.iml
 /build
+/gradle
+/gradlew
+/gradlew.bat
 /out
 .DS_store
 *.DS_store

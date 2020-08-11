@@ -1,10 +1,5 @@
 package com.agile4j.utils.enumeration
 
-import com.agile4j.utils.check.be
-import com.agile4j.utils.check.must
-import com.agile4j.utils.check.ruler.support.IntRuler.gt
-import com.agile4j.utils.check.ruler.support.IntRuler.gte
-import com.agile4j.utils.check.ruler.support.IntRuler.lte
 import org.apache.commons.lang3.StringUtils
 
 enum class ConstellationEnum(val minDate: String,
@@ -24,8 +19,8 @@ enum class ConstellationEnum(val minDate: String,
 
     companion object {
         fun getByMonthAndDay(month: Int, day: Int): ConstellationEnum {
-            month must be(gte(1), lte(12))
-            day must be(gt(1), lte(31))
+            if (month < 1 || month > 12) throw IllegalArgumentException("illegal month:$month")
+            if (day < 1 || day > 31) throw IllegalArgumentException("illegal day:$day")
             val date = StringUtils.join(month, day).toInt()
             return enumValues<ConstellationEnum>().first { constellation ->
                 date > constellation.minDate.toInt() &&

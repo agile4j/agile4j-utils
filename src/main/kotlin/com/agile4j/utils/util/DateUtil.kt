@@ -1,10 +1,5 @@
 package com.agile4j.utils.util
 
-import com.agile4j.utils.check.be
-import com.agile4j.utils.check.must
-import com.agile4j.utils.check.ruler.support.DateRuler.notNull
-import com.agile4j.utils.check.ruler.support.IntRuler.gte
-import com.agile4j.utils.check.ruler.support.IntRuler.lte
 import com.agile4j.utils.constant.STANDARD_DATETIME_FORMAT
 import com.agile4j.utils.constant.STANDARD_DATE_FORMAT
 import com.agile4j.utils.enumeration.WeekEnum
@@ -48,7 +43,7 @@ object DateUtil {
      * 获取当月天数
      */
     fun getDayNumByMonth(year: Int, month: Int): Int {
-        month must be(gte(1), lte(12))
+        if (month < 1 || month > 12) throw IllegalArgumentException("illegal month:$month")
         return when (month) {
             4, 6, 9, 11 -> 30
             2 -> if (isLeapYear(year)) 29 else 28
@@ -65,7 +60,6 @@ object DateUtil {
      * 获取日期对应的星期
      */
     fun getWeek(date: Date): WeekEnum {
-        date must notNull
         val calender = Calendar.getInstance()
         calender.time = date
         return WeekEnum.getByCode(calender.get(Calendar.DAY_OF_WEEK))

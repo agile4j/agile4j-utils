@@ -1,7 +1,5 @@
 package com.agile4j.utils.scope
 
-import com.agile4j.utils.check.must
-import com.agile4j.utils.check.ruler.support.AnyRuler.beNull
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -28,13 +26,41 @@ class Scope {
     companion object ScopeUtils {
         private val scopeThreadLocal = ThreadLocal<Scope>()
 
+        fun copyScope(scope: Scope?) : Scope {
+            val result = Scope()
+            result.map.putAll(scope?.map?: emptyMap())
+            return result
+        }
+
         fun currentScope() : Scope? = scopeThreadLocal.get()
 
         fun beginScope() {
-            scopeThreadLocal.get() must beNull
-            scopeThreadLocal.set(Scope())
+            if (scopeThreadLocal.get() == null) scopeThreadLocal.set(Scope())
         }
 
         fun endScope() = scopeThreadLocal.remove()
+
+        fun runWithExistScope(scope: Scope?, runner: () -> Unit) =
+            supplyWithExistScope(scope) {runner.invoke()}
+
+        fun <R> supplyWithExistScope(scope: Scope?, supplier: () -> R) : R {
+            val oldScope = scopeThreadLocal.get()
+            scopeThreadLocal.set(scope)
+            try {
+                return supplier.invoke()
+            } finally {
+                if (oldScope != null) {
+                    scopeThreadLocal.set(oldScope)
+                } else {
+                    scopeThreadLocal.remove()
+                }
+            }
+        }
+
+        fun runWithNewScope(runner: () -> Unit) =
+            runWithExistScope(Scope()) {runner.invoke()}
+
+        fun <R> supplyWithNewScope(supplier: () -> R) : R =
+            supplyWithExistScope(Scope()) {supplier.invoke()}
     }
 }
