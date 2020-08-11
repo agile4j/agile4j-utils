@@ -86,11 +86,11 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
     }
 
     /**
-     * Constructs a new, empty <tt>WeakIdentityHashMap</tt> with the given initial
+     * Constructs a new, empty WeakIdentityHashMap with the given initial
      * capacity and the given load factor.
      *
-     * @param  initialCapacity The initial capacity of the <tt>WeakIdentityHashMap</tt>
-     * @param  loadFactor      The load factor of the <tt>WeakIdentityHashMap</tt>
+     * @param  initialCapacity The initial capacity of the WeakIdentityHashMap
+     * @param  loadFactor      The load factor of the WeakIdentityHashMap
      * @throws IllegalArgumentException if the initial capacity is negative,
      *         or if the load factor is nonpositive.
      */
@@ -113,10 +113,10 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
     }
 
     /**
-     * Constructs a new, empty <tt>WeakIdentityHashMap</tt> with the given initial
+     * Constructs a new, empty WeakIdentityHashMap with the given initial
      * capacity and the default load factor (0.75).
      *
-     * @param  initialCapacity The initial capacity of the <tt>WeakIdentityHashMap</tt>
+     * @param  initialCapacity The initial capacity of the WeakIdentityHashMap
      * @throws IllegalArgumentException if the initial capacity is negative
      */
     public WeakIdentityHashMap(int initialCapacity) {
@@ -124,7 +124,7 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
     }
 
     /**
-     * Constructs a new, empty <tt>WeakIdentityHashMap</tt> with the default initial
+     * Constructs a new, empty WeakIdentityHashMap with the default initial
      * capacity (16) and load factor (0.75).
      */
     public WeakIdentityHashMap() {
@@ -132,8 +132,8 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
     }
 
     /**
-     * Constructs a new <tt>WeakIdentityHashMap</tt> with the same mappings as the
-     * specified map.  The <tt>WeakIdentityHashMap</tt> is created with the default
+     * Constructs a new WeakIdentityHashMap with the same mappings as the
+     * specified map.  The WeakIdentityHashMap is created with the default
      * load factor (0.75) and an initial capacity sufficient to hold the
      * mappings in the specified map.
      *
@@ -259,7 +259,7 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
     }
 
     /**
-     * Returns <tt>true</tt> if this map contains no key-value mappings.
+     * Returns true if this map contains no key-value mappings.
      * This result is a snapshot, and may not reflect unprocessed
      * entries that will be removed before next attempted access
      * because they are no longer referenced.
@@ -300,12 +300,12 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
     }
 
     /**
-     * Returns <tt>true</tt> if this map contains a mapping for the
+     * Returns true if this map contains a mapping for the
      * specified key.
      *
      * @param  key   The key whose presence in this map is to be tested
-     * @return <tt>true</tt> if there is a mapping for <tt>key</tt>;
-     *         <tt>false</tt> otherwise
+     * @return true if there is a mapping for key;
+     *         false otherwise
      */
     public boolean containsKey(Object key) {
         return getEntry(key) != null;
@@ -333,10 +333,10 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
      *
      * @param key key with which the specified value is to be associated.
      * @param value value to be associated with the specified key.
-     * @return the previous value associated with <tt>key</tt>, or
-     *         <tt>null</tt> if there was no mapping for <tt>key</tt>.
-     *         (A <tt>null</tt> return can also indicate that the map
-     *         previously associated <tt>null</tt> with <tt>key</tt>.)
+     * @return the previous value associated with key, or
+     *         null if there was no mapping for key.
+     *         (A null return can also indicate that the map
+     *         previously associated null with key.)
      */
     public V put(K key, V value) {
         Object k = maskNull(key);
@@ -462,23 +462,23 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
 
     /**
      * Removes the mapping for a key from this weak hash map if it is present.
-     * More formally, if this map contains a mapping from key <tt>k</tt> to
-     * value <tt>v</tt> such that <code>(key==null ?  k==null :
+     * More formally, if this map contains a mapping from key k to
+     * value v such that <code>(key==null ?  k==null :
      * key.equals(k))</code>, that mapping is removed.  (The map can contain
      * at most one such mapping.)
      *
      * <p>Returns the value to which this map previously associated the key,
-     * or <tt>null</tt> if the map contained no mapping for the key.  A
-     * return value of <tt>null</tt> does not <i>necessarily</i> indicate
+     * or null if the map contained no mapping for the key.  A
+     * return value of null does not <i>necessarily</i> indicate
      * that the map contained no mapping for the key; it's also possible
-     * that the map explicitly mapped the key to <tt>null</tt>.
+     * that the map explicitly mapped the key to null.
      *
      * <p>The map will not contain a mapping for the specified key once the
      * call returns.
      *
      * @param key key whose mapping is to be removed from the map
-     * @return the previous value associated with <tt>key</tt>, or
-     *         <tt>null</tt> if there was no mapping for <tt>key</tt>
+     * @return the previous value associated with key, or
+     *         null if there was no mapping for key
      */
     public V remove(Object key) {
         Object k = maskNull(key);
@@ -558,11 +558,11 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
     }
 
     /**
-     * Returns <tt>true</tt> if this map maps one or more keys to the
+     * Returns true if this map maps one or more keys to the
      * specified value.
      *
      * @param value value whose presence in this map is to be tested
-     * @return <tt>true</tt> if this map maps one or more keys to the
+     * @return true if this map maps one or more keys to the
      *         specified value
      */
     public boolean containsValue(Object value) {
@@ -754,12 +754,12 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
      * The set is backed by the map, so changes to the map are
      * reflected in the set, and vice-versa.  If the map is modified
      * while an iteration over the set is in progress (except through
-     * the iterator's own <tt>remove</tt> operation), the results of
+     * the iterator's own remove operation), the results of
      * the iteration are undefined.  The set supports element removal,
      * which removes the corresponding mapping from the map, via the
-     * <tt>Iterator.remove</tt>, <tt>Set.remove</tt>,
-     * <tt>removeAll</tt>, <tt>retainAll</tt>, and <tt>clear</tt>
-     * operations.  It does not support the <tt>add</tt> or <tt>addAll</tt>
+     * Iterator.remove, Set.remove,
+     * removeAll, retainAll, and clear
+     * operations.  It does not support the add or addAll
      * operations.
      */
     public Set<K> keySet() {
@@ -807,13 +807,13 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
      * The collection is backed by the map, so changes to the map are
      * reflected in the collection, and vice-versa.  If the map is
      * modified while an iteration over the collection is in progress
-     * (except through the iterator's own <tt>remove</tt> operation),
+     * (except through the iterator's own remove operation),
      * the results of the iteration are undefined.  The collection
      * supports element removal, which removes the corresponding
-     * mapping from the map, via the <tt>Iterator.remove</tt>,
-     * <tt>Collection.remove</tt>, <tt>removeAll</tt>,
-     * <tt>retainAll</tt> and <tt>clear</tt> operations.  It does not
-     * support the <tt>add</tt> or <tt>addAll</tt> operations.
+     * mapping from the map, via the Iterator.remove,
+     * Collection.remove, removeAll,
+     * retainAll and clear operations.  It does not
+     * support the add or addAll operations.
      */
     public Collection<V> values() {
         Collection<V> vs = values;
@@ -851,14 +851,14 @@ public class WeakIdentityHashMap<K,V> extends AbstractMap<K,V> implements Map<K,
      * The set is backed by the map, so changes to the map are
      * reflected in the set, and vice-versa.  If the map is modified
      * while an iteration over the set is in progress (except through
-     * the iterator's own <tt>remove</tt> operation, or through the
-     * <tt>setValue</tt> operation on a map entry returned by the
+     * the iterator's own remove operation, or through the
+     * setValue operation on a map entry returned by the
      * iterator) the results of the iteration are undefined.  The set
      * supports element removal, which removes the corresponding
-     * mapping from the map, via the <tt>Iterator.remove</tt>,
-     * <tt>Set.remove</tt>, <tt>removeAll</tt>, <tt>retainAll</tt> and
-     * <tt>clear</tt> operations.  It does not support the
-     * <tt>add</tt> or <tt>addAll</tt> operations.
+     * mapping from the map, via the Iterator.remove,
+     * Set.remove, removeAll, retainAll and
+     * clear operations.  It does not support the
+     * add or addAll operations.
      */
     public Set<Map.Entry<K,V>> entrySet() {
         Set<Map.Entry<K,V>> es = entrySet;
