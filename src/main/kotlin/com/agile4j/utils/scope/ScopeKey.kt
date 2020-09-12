@@ -12,7 +12,14 @@ class ScopeKey<T> private constructor(
     val initializer: Supplier<T>?
 ) {
 
-    fun set(value: T) = currentScope()?.let { it[this] = value }
+    /**
+     * @return true if in a scope and set success.
+     */
+    fun set(value: T): Boolean {
+        val scope = currentScope() ?: return false
+        scope[this] = value
+        return true
+    }
 
     fun get(): T? = currentScope()?.get(this) ?: defaultValue
 
