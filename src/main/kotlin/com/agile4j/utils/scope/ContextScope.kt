@@ -6,15 +6,15 @@ import java.util.concurrent.ConcurrentHashMap
  * @author liurenpeng
  * Created on 2020-06-15
  */
-class Scope {
+class ContextScope {
 
-    private val map = ConcurrentHashMap<ScopeKey<*>, Any>()
+    private val map = ConcurrentHashMap<ContextScopeKey<*>, Any>()
 
-    operator fun <T> set(key: ScopeKey<T>, value: T?) =
+    operator fun <T> set(key: ContextScopeKey<T>, value: T?) =
         if (value != null) map.put(key, value) else map.remove(key)
 
     @Suppress("UNCHECKED_CAST")
-    operator fun <T> get(key: ScopeKey<T>): T? {
+    operator fun <T> get(key: ContextScopeKey<T>): T? {
         var value = map[key] as T?
         if (value == null && key.initializer != null) {
             value = key.initializer.get()
@@ -24,26 +24,26 @@ class Scope {
     }
 
     companion object ScopeUtils {
-        private val scopeThreadLocal = ThreadLocal<Scope>()
+        private val scopeThreadLocal = ThreadLocal<ContextScope>()
 
-        fun copyScope(scope: Scope?) : Scope {
-            val result = Scope()
+        fun copyScope(scope: ContextScope?) : ContextScope {
+            val result = ContextScope()
             result.map.putAll(scope?.map?: emptyMap())
             return result
         }
 
-        fun currentScope() : Scope? = scopeThreadLocal.get()
+        fun currentScope() : ContextScope? = scopeThreadLocal.get()
 
         fun beginScope() {
-            if (scopeThreadLocal.get() == null) scopeThreadLocal.set(Scope())
+            if (scopeThreadLocal.get() == null) scopeThreadLocal.set(ContextScope())
         }
 
         fun endScope() = scopeThreadLocal.remove()
 
-        fun runWithExistScope(scope: Scope?, runner: () -> Unit) =
+        fun runWithExistScope(scope: ContextScope?, runner: () -> Unit) =
             supplyWithExistScope(scope) {runner.invoke()}
 
-        fun <R> supplyWithExistScope(scope: Scope?, supplier: () -> R) : R {
+        fun <R> supplyWithExistScope(scope: ContextScope?, supplier: () -> R) : R {
             val oldScope = scopeThreadLocal.get()
             scopeThreadLocal.set(scope)
             try {
@@ -58,9 +58,9 @@ class Scope {
         }
 
         fun runWithNewScope(runner: () -> Unit) =
-            runWithExistScope(Scope()) {runner.invoke()}
+            runWithExistScope(ContextScope()) {runner.invoke()}
 
         fun <R> supplyWithNewScope(supplier: () -> R) : R =
-            supplyWithExistScope(Scope()) {supplier.invoke()}
+            supplyWithExistScope(ContextScope()) {supplier.invoke()}
     }
 }
